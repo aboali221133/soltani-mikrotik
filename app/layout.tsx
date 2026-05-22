@@ -9,7 +9,6 @@ const cairo = Cairo({ subsets: ['arabic', 'latin'], variable: '--font-sans' });
 export const metadata: Metadata = {
   title: 'Soltani MikroTik',
   description: 'تطبيق ويب لإدارة أجهزة مايكروتيك المتعددة ديناميكياً.',
-  manifest: '/manifest.ts',
   icons: {
     apple: '/icon.svg',
     icon: '/icon.svg',
