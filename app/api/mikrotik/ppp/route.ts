@@ -23,7 +23,7 @@ export async function GET(req: Request) {
 
     const host = server.remote_dns_domain || server.local_ip;
     const protocol = server.ssl_enabled ? 'https' : 'http';
-    const port = server.api_port || (server.ssl_enabled ? 8729 : 8728);
+    const port = server.api_port || (server.ssl_enabled ? 443 : 80);
     const baseUrl = `${protocol}://${host}:${port}/rest/ppp`;
     const token = Buffer.from(`${server.username}:${server.plain_password}`).toString('base64');
     
@@ -63,7 +63,7 @@ export async function POST(req: Request) {
 
     const host = server.remote_dns_domain || server.local_ip;
     const protocol = server.ssl_enabled ? 'https' : 'http';
-    const port = server.api_port || (server.ssl_enabled ? 8729 : 8728);
+    const port = server.api_port || (server.ssl_enabled ? 443 : 80);
     const token = Buffer.from(`${server.username}:${server.plain_password}`).toString('base64');
     
     const headers = { 'Authorization': `Basic ${token}`, 'Content-Type': 'application/json' };

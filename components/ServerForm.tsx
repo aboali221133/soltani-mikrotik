@@ -13,7 +13,7 @@ export default function ServerManager() {
     localIp: '',
     remoteDnsDomain: '',
     sslEnabled: false,
-    apiPort: 8728,
+    apiPort: 80,
     username: '',
     plainPassword: ''
   });
@@ -42,7 +42,7 @@ export default function ServerManager() {
     }));
     
     if (name === 'sslEnabled') {
-      setFormData(prev => ({ ...prev, apiPort: checked ? 8729 : 8728 }));
+      setFormData(prev => ({ ...prev, apiPort: checked ? 443 : 80 }));
     }
   };
 
@@ -223,7 +223,7 @@ export default function ServerManager() {
                       </label>
                     </div>
                   </div>
-                  <p className="text-xs text-slate-500 mt-1">الافتراضي بدون تشفير: 8728, بتشفير SSL/HTTPS: 8729</p>
+                  <p className="text-xs text-slate-500 mt-1">الافتراضي: 80 (لـ HTTP) أو 443 (لـ HTTPS). التطبيق يستخدم RouterOS REST API.</p>
                 </div>
              </div>
 

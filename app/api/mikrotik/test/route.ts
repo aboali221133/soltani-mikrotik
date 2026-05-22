@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     }
 
     const protocol = sslEnabled ? 'https' : 'http';
-    const port = apiPort || (sslEnabled ? 8729 : 8728);
+    const port = apiPort || (sslEnabled ? 443 : 80);
     
     // RouterOS v7 REST API standard path for testing (just checking system resource or identity)
     const url = `${protocol}://${host}:${port}/rest/system/identity`;
