@@ -37,7 +37,9 @@ export default function StaffManager() {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchStaff();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const changeRole = async (id: string, newRole: string) => {

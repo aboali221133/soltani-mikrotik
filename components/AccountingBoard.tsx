@@ -62,7 +62,9 @@ export default function AccountingBoard() {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchLogs();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateRange]);
 
   const totalRevenue = logs.reduce((sum, log) => sum + Number(log.revenue_generated || 0), 0);

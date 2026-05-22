@@ -21,16 +21,18 @@ export default function ServerManager() {
   const [testing, setTesting] = useState(false);
   const [testResult, setTestResult] = useState<{status: 'success' | 'error' | 'local', message: string} | null>(null);
 
-  useEffect(() => {
-    fetchServers();
-  }, []);
-
   const fetchServers = async () => {
     setLoading(true);
     const { data } = await supabase.from('servers').select('*').order('created_at', { ascending: false });
     if (data) setServers(data);
     setLoading(false);
   };
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchServers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;

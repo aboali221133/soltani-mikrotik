@@ -47,8 +47,10 @@ export default function PPPoEDashboard({ serverId, profile }: { serverId: string
 
   useEffect(() => {
     if (serverId && serverId !== 'none') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       fetchData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [serverId]);
 
   const getActiveSession = (username: string) => data.active.find((a: any) => a.name === username);

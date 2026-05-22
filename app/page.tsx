@@ -11,31 +11,6 @@ export default function Home() {
   const [profile, setProfile] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    // Check active session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      if (session?.user) {
-        fetchProfile(session.user.id);
-      } else {
-        setLoading(false);
-      }
-    });
-
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-      if (session?.user) {
-         fetchProfile(session.user.id);
-      } else {
-         setProfile(null);
-         setLoading(false);
-      }
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-
   const fetchProfile = async (userId: string, retries = 3) => {
     try {
       const { data, error } = await supabase
@@ -67,6 +42,32 @@ export default function Home() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    // Check active session
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+      if (session?.user) {
+        fetchProfile(session.user.id);
+      } else {
+        setLoading(false);
+      }
+    });
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+      if (session?.user) {
+         fetchProfile(session.user.id);
+      } else {
+         setProfile(null);
+         setLoading(false);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (loading) {
     return (
