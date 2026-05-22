@@ -1,0 +1,6 @@
+{
+  "name": "soltani mikrotik",
+  "description": "Progressive Web App to dynamically manage multiple MikroTik routers via RouterOS v7 REST API.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

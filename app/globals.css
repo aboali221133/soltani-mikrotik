@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .en-num {
+    direction: ltr !important;
+    display: inline-block;
+    unicode-bidi: isolate;
+    font-family: monospace;
+  }
+}
